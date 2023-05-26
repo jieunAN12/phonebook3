@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- DAO에서 지정해준 이름과 동일하게 -->
+<mapper namespace="phonebook">
+
+<select id="selectList" resultType="com.javaex.vo.PersonVO">
+<![CDATA[
+select
+person_id, name, hp, company
+from person
+]]>
+</select>
+
+<insert id="insert" parameterType="com.javaex.vo.PersonVO">
+<![CDATA[
+insert into person
+values(seq_person_id.nextval,
+#{name},
+#{hp},
+#{company}
+)
+]]>
+</insert>
+
+<insert id="insert2" parameterType="map">
+<![CDATA[
+insert into person
+values(seq_person_id.nextval,
+#{name},
+#{hp},
+#{company}
+)
+]]>
+</insert>
+
+<update id="update" parameterType="com.javaex.vo.PersonVO">
+<![CDATA[
+update person 
+set name=#{name},
+	hp=#{hp},
+	company=#{company}
+where person_id = #{person_id}
+]]>
+</update>
+
+<delete id="delete" parameterType="com.javaex.vo.PersonVO">
+<![CDATA[
+delete
+from person
+where person_id = #{person_id} 
+]]>
+</delete>
+<!-- parameterType="int"도 가능 -->
+<select id="selectdetail" resultType="com.javaex.vo.PersonVO" parameterType="com.javaex.vo.PersonVO">
+<![CDATA[
+select
+person_id, name, hp, company
+from person
+where person_id = #{person_id}
+]]>
+</select>
+
+</mapper>
