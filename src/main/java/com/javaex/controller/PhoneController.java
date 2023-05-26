@@ -44,6 +44,7 @@ public class PhoneController {
 	//					  @requestParam("hp") String hp, 
 	//					  @requestParam("company") String company) { 하나씩 뽑아주기
 		System.out.println("write() 실행 확인!");
+		System.out.println("write() 실행 확인!");
 		System.out.println(vo);
 		//dao에 있는거 가져오기
 		//PersonDAO dao = new PersonDAO();
